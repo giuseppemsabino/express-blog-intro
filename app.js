@@ -6,7 +6,7 @@ const port = 3000;
 
 // console.log(app);
 
-const post =[
+const posts =[
     {
         title:"ciambellone",
         content:"questa e la foto di un ciambellone",
@@ -42,7 +42,14 @@ const post =[
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get ('/', (req,res) => {
-    res.send('hello wolrd!')
+    res.send('server del mio blog')
+})
+
+app.get('/bacheca', (req,res) => {
+    res.json({
+        count: posts.length,
+        posts: posts
+    })
 })
 
 app.listen(port, () => {
